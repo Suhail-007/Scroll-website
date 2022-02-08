@@ -39,6 +39,7 @@ header {
 .nav-header {
 		display: flex;
 		justify-content: space-between;
+		padding: 0.5em 1em;
 }
 
 .nav-header img[alt="logo"] {
@@ -60,7 +61,7 @@ header {
 
 .nav-links {
 		position: absolute;
-		background: white;
+		background: white;		
 		width: 100%;
 		text-transform: capitalize;
 		font-size: 1.5em;
@@ -68,7 +69,7 @@ header {
 		overflow: hidden;
 		pointer-events: none;
 		transition: all var(--transition-te);	
-		box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+		box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
 }
 
 .nav-links ul {
@@ -108,6 +109,7 @@ header {
 		right: 0;
 		text-align: center;
 		padding: 0 1em;
+		color: white;
 		display: flex;
 		flex-direction: column;
 		gap: 5px 0;
@@ -117,7 +119,12 @@ header {
 .desc-container h2 {
 		margin: 0;
 		padding: 0;
-		font-size: 2em;
+		font-size: 3em;
+}
+
+.desc-container p {
+		font-size: 1.2em;
+		text-align: justify;
 }
 
 .desc-container a {
@@ -146,25 +153,13 @@ section:nth-child(odd) {
 }
 
 section > h2 {
-		font-size: 0;
-		opacity: 0;
+		font-size: 2em;
+		position: sticky;
+		top: 3em;
 }
 
 section > h2 > span {
 		color: teal;
-}
-
-.position section > h2 {
-		animation: visible 2s forwards;
-		position: sticky;
-		top: 0;				
-}
-
-@keyframes visible {
-		100% {
-				font-size: 2em;
-				opacity: 1;
-		}
 }
 
 footer {
@@ -188,7 +183,11 @@ footer {
 		color: white;
 		background: turquoise;
 		animation: bounce 1500ms linear infinite;
-		display: block;
+		transition: opacity 500ms ease-in-out;
+		cursor: pointer;
+		visibility: hidden;
+		pointer-events: none;
+		opacity: 0;
 }
 
 @keyframes bounce {
@@ -205,7 +204,6 @@ footer {
 
 /*classes later on added by js*/
 .show-links .nav-links {
-		height: 8.5em;
 		overflow: visible;
 		pointer-events: auto;
 }
@@ -222,12 +220,21 @@ footer {
 		margin-top: 100px;
 }
 
+/*this is for back to top arrow*/
+.show-links {
+		visibility: visible;
+		pointer-events: auto;
+		opacity: 1;
+}
+
 /*these classes will be added when we're at specific position*/
 .fixed-nav {
 		position: fixed;
 		top: 0;
 		width: 100%;
 		z-index: 1;
+		background: white;
+		box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
 }
 
 @media screen and (min-width: 64em){
@@ -235,7 +242,7 @@ footer {
 		font-size: 1.8vh;
 }
 main {
-		font-size: 1.5vh;
+		font-size: 1.8vh;
 }
 
 .container {
@@ -243,32 +250,35 @@ main {
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		background: transparent;
+}
+
+.nav-header button {
+	display: none;
 }
 
 .nav-links {
 		position: static;
-		height: 100%;
-		overflow: visible;
+		height: auto !important;
 		pointer-events: auto;
-		transition: none;
 		box-shadow: none;
 		margin-right: 2em;
+		background: transparent;		
 }
 
 .links {
 		display: flex;
 		justify-content: flex-end;
-		align-items: center;	
-		height: 100%;
-}
-
-.nav-header button {
-		display: none;
 }
 
 .nav-links ul li > a {
 		opacity: 1;
 		padding: 0 0.5em;		
+		color: whitesmoke;
+}
+
+.fixed-nav .nav-links ul li > a {		
+		color: black;
 }
 
 footer {
