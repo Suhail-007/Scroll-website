@@ -154,8 +154,10 @@ section:nth-child(odd) {
 
 section > h2 {
 		font-size: 2em;
+}
+
+.position {
 		position: sticky;
-		top: 3em;
 }
 
 section > h2 > span {

@@ -7,6 +7,7 @@ const links = document.querySelector('.links');
 menuBtn.addEventListener('click', () => {
 		const linksContainerHeight = linksContainer.getBoundingClientRect().height;
 		const linksHeight = links.getBoundingClientRect(). height;
+		
 		if (linksContainerHeight === 0) {
 				linksContainer.style.height = `${linksHeight}px`;
 				header.classList.add('show-links');
@@ -18,10 +19,13 @@ menuBtn.addEventListener('click', () => {
 
 const nav = document.getElementById('nav')
 const backToTop = document.querySelector('.arrow');
+const sections = document.querySelectorAll('section > h2');
+
 
 window.addEventListener('scroll', () => {
 const scrollHeight = window.pageYOffset;
 const linksContainerHeight = linksContainer.getBoundingClientRect().height;
+
 		if (scrollHeight > linksContainerHeight) {
 				nav.classList.add('fixed-nav');
 		} else {
@@ -33,7 +37,16 @@ const linksContainerHeight = linksContainer.getBoundingClientRect().height;
 				backToTop.classList.add('show-links');
 		} else {
 				backToTop.classList.remove('show-links');
+		}		
+
+const navHeight = nav.getBoundingClientRect().height;
+
+sections.forEach(section => {
+		if (scrollHeight > section.offsetTop) {
+				section.classList.add('position');
+				section.style.top = `${navHeight}px`;
 		}
+})		
 })
 
 const scrollLinks = document.querySelectorAll('.scroll-link');
@@ -48,6 +61,7 @@ scrollLinks.forEach(scrollLink => {
 			const navHeight = nav.getBoundingClientRect().height;
 			const fixedNav = nav.classList.contains('fixed-nav');
 			
+		//get element			
 			const id = e.currentTarget.getAttribute('href');
 			const element = document.getElementById(id.slice(1));
 			let position = element.offsetTop - navHeight;
@@ -56,6 +70,7 @@ scrollLinks.forEach(scrollLink => {
 					top: position,
 					left: 0,
 			})
+			
 		//to close nav			
 			linksContainer.style.height = 0;	
 			header.classList.remove('show-links');
