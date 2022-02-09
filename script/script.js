@@ -42,10 +42,20 @@ const linksContainerHeight = linksContainer.getBoundingClientRect().height;
 const navHeight = nav.getBoundingClientRect().height;
 
 sections.forEach(section => {
-		if (scrollHeight > section.offsetTop) {
+		if (scrollHeight > section.offsetTop - navHeight) {
 				section.classList.add('position');
 				section.style.top = `${navHeight}px`;
-		}
+				
+				section.animate([
+				//keyframes
+						{fontSize: '2em', opacity: 1}
+				],
+				{
+				//animation methods
+				duration: 500,
+				fill: 'forwards',
+				})
+		}		
 })		
 })
 
@@ -74,5 +84,23 @@ scrollLinks.forEach(scrollLink => {
 		//to close nav			
 			linksContainer.style.height = 0;	
 			header.classList.remove('show-links');
-		})
+			
+			sections.forEach(section => {
+				if (position < section.offsetTop) {
+				section.classList.add('position');
+				section.style.top = `${navHeight}px`;
+				
+				section.animate([
+				//keyframes
+						{fontSize: '2em', opacity: 1}
+				], {
+				//animation methods
+				duration: 1000,				
+				fill: 'forwards',
+				})
+			}
+	})
+	
+	
+	})
 })
