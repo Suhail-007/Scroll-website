@@ -1,8 +1,8 @@
 const menuBtn = document.querySelector('button');
 const header = document.querySelector('header');
-
 const linksContainer = document.querySelector('.nav-links');
 const links = document.querySelector('.links');
+const years = document.querySelector('#date');
 
 menuBtn.addEventListener('click', () => {
 		const linksContainerHeight = linksContainer.getBoundingClientRect().height;
@@ -45,7 +45,7 @@ sections.forEach(section => {
 		if (scrollHeight > section.offsetTop - navHeight) {
 				section.classList.add('position');
 				section.style.top = `${navHeight}px`;
-				
+	
 				section.animate([
 				//keyframes
 						{fontSize: '2em', opacity: 1}
@@ -99,8 +99,10 @@ scrollLinks.forEach(scrollLink => {
 				fill: 'forwards',
 				})
 			}
-	})
-	
-	
+	})				
 	})
 })
+
+//date
+const date = new Date();
+years.innerText = date.getFullYear();

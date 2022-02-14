@@ -179,7 +179,7 @@ footer {
 .arrow {
 		position: fixed;
 		right: 20px;
-		bottom: 20px;
+		bottom: 4em;
 		font-size: 1.1em;
 		padding: 0.8rem 1rem;
 		border-radius: 100%;
